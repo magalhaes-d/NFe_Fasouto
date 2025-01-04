@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import pandas as pd
-from datetime import datetime
 import os
+
+period = input("Digite o período (MM_YYYY): ")
 
 # HTML
 with open("input_data/nfe_fasouto.html", "r", encoding="utf-8") as file:
@@ -45,8 +46,7 @@ df['Quantidade'] = df['Quantidade'].str.replace(',', '.')
 df["Quantidade"] = df["Quantidade"].astype(float)
 
 # Exportar para um arquivo Excel
-current_date = datetime.now()
-output_file = f"output_data/feira_{current_date.strftime('%m_%Y')}.xlsx"
+output_file = f"output_data/feira_{period}.xlsx"
 df.to_excel(output_file, index=False)
 
 print(f"Dados exportados para {output_file}")
