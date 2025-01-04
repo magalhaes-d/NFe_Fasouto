@@ -92,5 +92,9 @@ if dataframes:
     # Salvar o DataFrame resultante em um único arquivo Excel
     base_de_dados.to_excel(output_file, index=False)
     print(f"Base de dados consolidada salva em {output_file}")
+
+    # Salvar o DataFrame resultante em outro diretório
+    base_de_dados.to_excel(r"C:\Users\Daniel\Desktop\Minha nuvem\base_de_dados.xlsx", index=False)
+    print(f"Base de dados consolidada salva em Minha nuvem")
 else:
     print("Nenhum arquivo foi processado.")
