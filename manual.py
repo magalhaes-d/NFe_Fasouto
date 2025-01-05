@@ -88,6 +88,9 @@ for filename in os.listdir(folder_path):
 # Concatenar todos os DataFrames em um único DataFrame
 if dataframes:
     base_de_dados = pd.concat(dataframes, ignore_index=True)
+    base_de_dados['Ano'] = base_de_dados['Período'].str.split('/').str[1]
+    base_de_dados['Mês'] = base_de_dados['Período'].str.split('/').str[0]
+    base_de_dados.sort_values(by=['Ano', 'Mês'], ascending=False, inplace=True)
     
     # Salvar o DataFrame resultante em um único arquivo Excel
     base_de_dados.to_excel(output_file, index=False)
